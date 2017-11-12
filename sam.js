@@ -6,14 +6,14 @@ export class SamComponent extends HTMLElement {
         this._model = {}
         const _model = this._model
         const _actions = {}
-        this.html = hyper.bind(this.attachShadow({mode: 'closed'}))
+        const _html = hyper.bind(this.attachShadow({mode: 'closed'}))
         let _needsRender
         const _stateRepresentation = () => {
             if (!_needsRender) {
                 _needsRender = true
                 Promise.resolve().then(() => {
                     _needsRender = false
-                    this.render(_model, _actions)
+                    this.render(_model, _actions, _html)
                 });
             }
         }
