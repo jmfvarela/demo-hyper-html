@@ -13,7 +13,7 @@ export class SamComponent extends HTMLElement {
                 _needsRender = true
                 Promise.resolve().then(() => {
                     _needsRender = false
-                    this.render(this._model)
+                    this.render(_model, _actions)
                 });
             }
         }
