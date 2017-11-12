@@ -16,21 +16,12 @@ export class DemoComponent extends SamComponent {
     }
 
     updateModel(model, proposal) {
-        if (proposal.time) {
-            model.hours = proposal.time.getHours()
-            model.minutes = proposal.time.getMinutes()
-            model.seconds = proposal.time.getSeconds()
+        if (proposal.tick) {
+            proposal.time = new Date(0, 0, 0, model.hours, model.minutes, model.seconds + 1)
         }
-        else if (proposal.tick) {
-            let time = new Date()
-            time.setHours(model.hours)
-            time.setMinutes(model.minutes)
-            time.setSeconds(model.seconds + 1)
-            model.hours = time.getHours()
-            model.minutes = time.getMinutes()
-            model.seconds = time.getSeconds()
-        }
-        console.log(model)
+        model.hours = proposal.time.getHours()
+        model.minutes = proposal.time.getMinutes()
+        model.seconds = proposal.time.getSeconds()
     }
 
     nextAction(model, actions) {
